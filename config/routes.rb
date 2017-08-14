@@ -3,5 +3,6 @@ Rails.application.routes.draw do
   	resources :boats, only: ['index','create']
   	resources :timeslots, only: ['index','create']
   	resources :assignments, only: ['index','create']
+  	resources :bookings, only: ['index','create']
   end
 end

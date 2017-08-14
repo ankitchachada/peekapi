@@ -1,6 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe Timeslot, type: :model do
+	it { should have_many(:assignments) }
+	it { should have_many(:bookings) }
+	it { should have_many(:boats) }
+	
 	subject { Fabricate(:timeslot) }
 	
 	context "when created" do

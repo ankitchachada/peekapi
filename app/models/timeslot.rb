@@ -1,5 +1,8 @@
 class Timeslot < ApplicationRecord
-	after_create :convert_end_time
+  has_many :assignments
+  has_many :bookings
+  has_many :boats, through: :assignments
+  after_create :convert_end_time
   scope :find_by_date, lambda { |dt| where(start_time: convert_date(dt))}
 
   def self.convert_date(dt)
