@@ -6,6 +6,7 @@ class Assignment < ApplicationRecord
 	include ActiveModel::Validations
 	validates_with AssignmentValidator
 
+	#this method is to update the availability in timeslots table
 	def update_availability_in_timeslot
 		timeslot = Timeslot.find(self.timeslot_id)
     occupied_seats = timeslot.bookings.count > 0 ? timeslot.bookings.sum(:size) : 0
@@ -13,8 +14,7 @@ class Assignment < ApplicationRecord
       timeslot.availability = timeslot.boats.pluck(:capacity).max
       timeslot.save
     else
-    	timeslot.boats.pluck(:capacity)[0].inspect
-      timeslot.availability = timeslot.boats.pluck(:capacity)[0]
+    	timeslot.availability = timeslot.boats.pluck(:capacity)[0]
       timeslot.save
     end
 	end

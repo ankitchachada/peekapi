@@ -4,7 +4,7 @@ class Booking < ApplicationRecord
   belongs_to :timeslot
 	
 	after_create :update_availability
-
+	#to update availability in timeslots table
 	def update_availability
 		timeslot = self.timeslot
 		timeslot_multiple_boats(timeslot)
@@ -18,6 +18,7 @@ class Booking < ApplicationRecord
 		  timeslot.customer_count = self.size
 		  timeslot.save 
 		else
+			#for multiple timeslots
 			boat_multiple_timeslot(timeslot)
 		end 
 		
