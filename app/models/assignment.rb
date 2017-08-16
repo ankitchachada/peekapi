@@ -18,5 +18,4 @@ class Assignment < ApplicationRecord
       timeslot.save
     end
 	end
-
 end
