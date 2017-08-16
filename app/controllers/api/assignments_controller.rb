@@ -6,15 +6,15 @@ class Api::AssignmentsController < ApplicationController
 	
   def create
     assignment = Assignment.new(assignment_params)
-		if assignment.save
-			render json: assignment, status: 201
-		else
-			render json: assignment.errors, status: :unprocessable_entity 
-		end
-	end
+    if assignment.save
+      render json: assignment, status: 201
+    else
+      render json: assignment.errors, status: :unprocessable_entity 
+    end
+  end
 
-	private
-	def assignment_params
-		params.require(:assignment).permit(:timeslot_id, :boat_id)
-	end
+  private
+  def assignment_params
+    params.require(:assignment).permit(:timeslot_id, :boat_id)
+  end
 end
