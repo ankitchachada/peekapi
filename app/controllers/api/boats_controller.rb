@@ -12,7 +12,7 @@ class Api::BoatsController < ApplicationController
     else
       render json: boat.errors, status: :unprocessable_entity 
     end
-end
+  end
 
   private
   def boat_params
