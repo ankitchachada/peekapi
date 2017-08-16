@@ -6,7 +6,7 @@ class Timeslot < ApplicationRecord
   scope :find_by_date, lambda { |dt| where(start_time: convert_date(dt))}
 
   def self.convert_date(dt)
-  	split_date = dt.split('-').map &:to_i
+    split_date = dt.split('-').map &:to_i
     year, month, day = split_date[0], split_date[1], split_date[2]
     begining = Date.new(year,month,day).to_time.to_i
     ending = Date.new(year,month,day+1).to_time.to_i
